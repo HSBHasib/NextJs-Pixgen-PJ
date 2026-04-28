@@ -1,8 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import { CircleDollar } from "@gravity-ui/icons";
-import { Avatar, Button, Card, Chip, CloseButton, Link } from "@heroui/react";
+import { Button, Card, Chip, Link } from "@heroui/react";
 import { BiSolidLike } from "react-icons/bi";
 
 
@@ -37,11 +36,11 @@ const Cards = ({ topGenData }) => {
           <div>
             <div className="text-[15px] font-medium flex items-center gap-1">
               {likes}
-              <BiSolidLike />
+              <BiSolidLike size={20} />
             </div>
             <div className="text-xs">Downloads: {downloads}</div>
           </div>
-          <Link href={`/${id}`}>
+          <Link href={`/all-photos/${id}`}>
             <Button size="sm" variant="secondary">
               View Details
             </Button>
