@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { Button, Card, Chip } from "@heroui/react";
+import { Chip } from "@heroui/react";
 import { BiSolidLike } from "react-icons/bi";
-import { Download, Heart, Link } from "lucide-react";
+import { Download, Link } from "lucide-react";
+import { RxCross2 } from "react-icons/rx";
 
 // Server Component
 const DetailsPhotoPage = async ({ params }) => {
@@ -18,6 +19,9 @@ const DetailsPhotoPage = async ({ params }) => {
   return (
     <div className="card bg-base-100 w-[60%] mx-auto shadow-blue-200 shadow-lg mt-2 rounded-lg ">
       <figure className="relative w-full h-auto aspect-square">
+          <div className="absolute right-2 top-2 bg-gray-200 p-1 rounded-full hover:scale-105 transition-all duration-300 cursor-pointer z-10">
+            <RxCross2 size={20} />
+          </div>
         <Image
           src={imageUrl}
           alt={title}
