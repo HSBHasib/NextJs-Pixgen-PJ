@@ -4,6 +4,7 @@ import { Chip } from "@heroui/react";
 import { BiSolidLike } from "react-icons/bi";
 import { Download, Link } from "lucide-react";
 import { RxCross2 } from "react-icons/rx";
+import CroxButton from "@/components/CroxButton";
 
 // Server Component
 const DetailsPhotoPage = async ({ params }) => {
@@ -13,15 +14,12 @@ const DetailsPhotoPage = async ({ params }) => {
   const data = await res.json();
 
   const targetData = data.filter((dataId) => dataId.id === Number(id));
-  const { title, imageUrl, prompt, category, likes, downloads, tags, model } =
-    targetData[0];
-
+  const { title, imageUrl, prompt, category, likes, downloads, tags, model } = targetData[0];
   return (
-    <div className="card bg-base-100 w-[60%] mx-auto shadow-blue-200 shadow-lg mt-2 rounded-lg ">
+    <div className="card bg-base-100 w-[70%] h-auto mx-auto shadow-blue-200 shadow-lg mt-2 rounded-lg">
       <figure className="relative w-full h-auto aspect-square">
-          <div className="absolute right-2 top-2 bg-gray-200 p-1 rounded-full hover:scale-105 transition-all duration-300 cursor-pointer z-10">
-            <RxCross2 size={20} />
-          </div>
+        {/* Back Button */}
+        <CroxButton />
         <Image
           src={imageUrl}
           alt={title}
@@ -30,7 +28,7 @@ const DetailsPhotoPage = async ({ params }) => {
         />
       </figure>
 
-      <div className="card-body -space-y-1">
+      <div className="card-body -space-y-1 -mt-2">
         <h2 className="card-title">
           {title}
           <Chip color="accent">{category}</Chip>
@@ -60,7 +58,7 @@ const DetailsPhotoPage = async ({ params }) => {
         <div className="flex justify-between items-center gap-6 py-4 px-5 mt-3 bg-gray-50/50 rounded-lg border border-gray-100 w-full shadow shadow-blue-200">
           {/* Like Stat */}
           <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="p-2 bg-rose-50 rounded-lg group-hover:bg-blue-100 transition-colors">
+            <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
               {/* <Heart size={20} className="text-rose-500 fill-rose-500" /> */}
               <BiSolidLike size={20} className="text-blue-500 fill-blue-500" />
             </div>
@@ -86,7 +84,7 @@ const DetailsPhotoPage = async ({ params }) => {
               <Download size={20} className="text-emerald-500" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-black text-gray-900 leading-none">
+              <span className="text-lg font-bold text-gray-900 leading-none">
                 {downloads}
               </span>
               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">
