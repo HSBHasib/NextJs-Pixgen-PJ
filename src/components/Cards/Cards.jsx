@@ -6,7 +6,6 @@ import { BiSolidLike } from "react-icons/bi";
 
 
 const Cards = ({ topGenData }) => {
-  console.log("topGenData = ", topGenData);
   const {id, title, imageUrl, category, likes, downloads } = topGenData;
   return (
     <div>

@@ -1,8 +1,22 @@
 "use client";
+
+import { authClient } from "@/lib/auth-client";
+import { Avatar } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 
 const Navbar = () => {
+  const signUp = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
+  const { data, isPending } = authClient.useSession();
+  const user = data?.user;
+
+  console.log("from navabr = ", user, isPending);
+
   return (
     <div className="border-b border-gray-300 px-2 mb-4">
       <nav className=" flex justify-between items-center py-3 w-5/6 mx-auto">
@@ -35,12 +49,33 @@ const Navbar = () => {
 
         <div>
           <ul className="flex items-center gap-3 text-sm font-medium">
-            <li className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm">
-              <Link href={"/auth/signup"}>SignUp</Link>
-            </li>
-            <li className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm">
-              <Link href={"/signin"}>SignIn</Link>
-            </li>
+            {!user ? (
+              <>
+                <li
+                  onClick={() => signUp()}
+                  className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm"
+                >
+                  <Link href={"/auth/signup"}>SignUp</Link>
+                </li>
+                <li className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm">
+                  <Link href={"/auth/signin"}>SignIn</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <Avatar>
+                  <Avatar.Image
+                    alt="userImg"
+                    src={user.image}
+                    referrerPolicy="no-referrer"
+                  />
+                  <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                </Avatar>
+                <li onClick={() => authClient.signOut()} className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm">
+                  <Link href='/'>Sign Out</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>

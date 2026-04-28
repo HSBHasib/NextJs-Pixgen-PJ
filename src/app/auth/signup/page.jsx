@@ -1,12 +1,74 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, Input, Checkbox, Link, Form } from "@heroui/react";
+import { Button, Input, Link, Form } from "@heroui/react";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { Bounce, toast } from "react-toastify";
 
 export default function SignUpPage() {
   const [isVisible, setIsVisible] = useState(false);
+  const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const formHandaler = async (data) => {
+    console.log(data);
+    const { name, image, email, password } = data;
+
+    const { data: dets, error } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+      image,
+    });
+
+    console.log("data is = ", dets);
+    console.log("error is = ", error);
+
+    // Success
+    if (dets) {
+      toast.success("Sign up Successful", {
+        position: "top-center",
+        autoClose: 600,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      reset();
+
+      setTimeout(() => {
+        router.push("/");
+      }, 600);
+    }
+
+    // Error
+    if (error) {
+      toast.error(error.message, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 mt-4">
@@ -20,57 +82,72 @@ export default function SignUpPage() {
         </div>
 
         {/* Signup Form */}
-        <Form className="flex flex-col gap-4">
+        <Form
+          onSubmit={handleSubmit(formHandaler)}
+          className="flex flex-col gap-4"
+        >
+          {/* Name */}
           <fieldset className="space-y-2">
             <legend className="font-semibold pl-2">Name</legend>
             <Input
-              isRequired
+              required
               placeholder="Enter your name"
               className="bg-gray-100 w-full"
+              {...register("name", { required: true })}
             />
+            {errors.name && <span>This field is required</span>}
           </fieldset>
 
+          {/* Image url */}
           <fieldset className="space-y-2">
             <legend className="font-semibold pl-2">Image Url</legend>
             <Input
-              isRequired
+              required
               placeholder="Enter your image url"
               className="bg-gray-100 w-full"
+              {...register("image", { required: true })}
             />
+            {errors.image && <span>This field is required</span>}
           </fieldset>
 
+          {/* Email */}
           <fieldset className="space-y-2">
             <legend className="font-semibold pl-2">Email</legend>
             <Input
-              isRequired
+              required
               placeholder="Enter your email"
               type="email"
               className="bg-gray-100 w-full"
+              {...register("email", { required: true })}
             />
+            {errors.email && <span>This field is required</span>}
           </fieldset>
 
+          {/* Password */}
           <fieldset className="space-y-2 relative">
             <legend className="font-semibold pl-2">Password</legend>
             <Input
-              isRequired
+              required
               type={isVisible ? "text" : "password"}
               placeholder="Enter you password"
               className="bg-gray-100 w-full"
+              {...register("password", { required: true })}
             />
-              <Button
-                isIconOnly
-                aria-label={isVisible ? "Hide password" : "Show password"}
-                size="sm"
-                variant="ghost"
-                className='absolute right-2 top-1'
-                onClick={() => setIsVisible(!isVisible)}
-              >
-                {isVisible ? (
-                  <FaEye className="size-4" />
-                ) : (
-                  <FaEyeSlash className="size-4" />
-                )}
-              </Button>
+            {errors.password && <span>This field is required</span>}
+            <Button
+              isIconOnly
+              aria-label={isVisible ? "Hide password" : "Show password"}
+              size="sm"
+              variant="ghost"
+              className="absolute right-2 top-1"
+              onClick={() => setIsVisible(!isVisible)}
+            >
+              {isVisible ? (
+                <FaEye className="size-4" />
+              ) : (
+                <FaEyeSlash className="size-4" />
+              )}
+            </Button>
           </fieldset>
 
           <Button
@@ -108,7 +185,7 @@ export default function SignUpPage() {
         <p className="mt-8 text-center text-sm text-gray-500">
           Already have an account?{" "}
           <Link
-            href="auth/signin"
+            href="/auth/signin"
             className="font-bold text-black hover:opacity-80"
           >
             sign in
