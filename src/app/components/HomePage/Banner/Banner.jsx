@@ -15,15 +15,14 @@ const Banner = () => {
           </p>
 
           <div className="flex gap-4">
-            <Link href="#">
-              <Button className="bg-linear-to-r from-pink-500 via-purple-500 bg-red-500 px-4 py-2 rounded-md hover:from-pink-600 hover:via-purple-600 hover:bg-red-600 transition-all duration-200">
+            <Link href="generate">
+              <Button className="cursor-pointer bg-linear-to-r from-pink-500 via-purple-500 bg-red-500 px-4 py-2 rounded-md hover:from-pink-600 hover:via-purple-600 hover:bg-red-600 transition-all duration-200">
                 Generate Now
               </Button>
             </Link>
 
             <Link href="/pricing">
-            {/* from-pink-500 via-purple-500 bg-red-500 */}
-              <Button className="bg-linear-to-r from-red-500 via-pink-500 bg-purple-500 px-4 py-2 rounded-md hover:from-red-600 hover:via-pink-600 hover:bg-purple-500 transition-all duration-300">
+              <Button className="cursor-pointer bg-linear-to-r from-red-500 via-pink-500 bg-purple-500 px-4 py-2 rounded-md hover:from-red-600 hover:via-pink-600 hover:bg-purple-500 transition-all duration-300">
                 View Pricing
               </Button>
             </Link>
