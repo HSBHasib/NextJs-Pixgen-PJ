@@ -36,7 +36,7 @@ const Navbar = () => {
         <div>
           <ul className="flex items-center gap-3 text-sm font-medium">
             <li className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm">
-              <Link href={"/signup"}>SignUp</Link>
+              <Link href={"/auth/signup"}>SignUp</Link>
             </li>
             <li className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm">
               <Link href={"/signin"}>SignIn</Link>
