@@ -6,11 +6,17 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Navbar = () => {
-  const signUp = async () => {
+  const googleSignUp = async () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
   };
+
+  const githubSignUp = async () => {
+    const data = await authClient.signIn.social({
+        provider: "github"
+    })
+}
 
   const { data, isPending } = authClient.useSession();
   const user = data?.user;
@@ -52,12 +58,12 @@ const Navbar = () => {
             {!user ? (
               <>
                 <li
-                  onClick={() => signUp()}
+                  onClick={() => googleSignUp()}
                   className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm"
                 >
                   <Link href={"/auth/signup"}>SignUp</Link>
                 </li>
-                <li className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm">
+                <li onClick={() => githubSignUp()} className="bg-linear-to-r from-pink-400 via-purple-500 bg-red-400 px-3 py-1 text-white rounded-sm">
                   <Link href={"/auth/signin"}>SignIn</Link>
                 </li>
               </>
