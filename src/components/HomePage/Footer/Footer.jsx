@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 mt-20">
+    <footer className="bg-gray-50 border-t border-gray-200 mt-20">
       <div className="relative w-5/6 mx-auto">
         {/* Subtle Gradient Glow (Light Version) */}
         <div className="absolute inset-0 -z-10" />
