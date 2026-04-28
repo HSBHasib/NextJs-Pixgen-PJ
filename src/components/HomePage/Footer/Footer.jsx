@@ -3,11 +3,10 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 mt-12">
+    <footer className="bg-gray-100 mt-20">
       <div className="relative w-5/6 mx-auto">
         {/* Subtle Gradient Glow (Light Version) */}
         <div className="absolute inset-0 -z-10" />
-
         {/* Content */}
         <div className="max-w-7xl mx-auto px-6 py-12">
           {/* Top Grid */}
@@ -22,7 +21,7 @@ const Footer = () => {
                   height={32}
                   className="brightness-100"
                 />
-                <h2 className="text-xl font-semibold tracking-tight text-gray-900">
+                <h2 className="text-xl font-bold tracking-tight text-gray-900">
                   pixgen
                 </h2>
               </div>
