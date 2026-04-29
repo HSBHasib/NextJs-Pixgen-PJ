@@ -2,8 +2,8 @@ import React from 'react'
 
 const PhotoDetsloadingPage = () => {
   return (
-    <div className='flex justify-center items-center h-[60vh]'>
-      <span className="loading loading-spinner text-secondary text-8xl font-extrabold"></span>
+    <div className="flex h-screen items-center justify-center">
+      <span className="animate-spin rounded-full h-12 w-12 border-t-3 border-b-3 border-blue-500"></span>
     </div>
   )
 }

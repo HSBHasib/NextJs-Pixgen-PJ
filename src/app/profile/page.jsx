@@ -10,13 +10,11 @@ function ProfilePage() {
   const { data, isPending } = authClient.useSession();
   const user = data?.user;
 
-  {
-    isPending && (
-      <>
-        <div className="flex justify-center items-center h-screen">
-          <span className="loading loading-spinner text-secondary text-4xl font-extrabold"></span>
-        </div>
-      </>
+  if (isPending) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <span className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></span>
+      </div>
     );
   }
 
@@ -32,7 +30,7 @@ function ProfilePage() {
           <div className="relative -mt-16 mb-4 flex justify-between items-end">
             <Avatar className="w-32 h-32 text-large border-4 border-white shadow-lg">
               <Avatar.Image alt="userImg" src={user?.image} />
-              <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+              <Avatar.Fallback>{user?.name?.charAt(0)}</Avatar.Fallback>
             </Avatar>
             <Button
               isIconOnly
@@ -40,7 +38,7 @@ function ProfilePage() {
               className="bg-gray-100 hover:bg-gray-200 rounded-full"
             >
               {/* Edit Proile Info */}
-              <EditProfileInfo />
+              <p><EditProfileInfo /></p>
             </Button>
           </div>
 
@@ -91,3 +89,5 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
+
+

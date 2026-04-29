@@ -53,12 +53,6 @@ export default function SignUpPage() {
       toast.success("Sign up Successful", {
         position: "top-center",
         autoClose: 600,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
         transition: Bounce,
       });
       reset();
@@ -73,12 +67,6 @@ export default function SignUpPage() {
       toast.error(error.message, {
         position: "top-center",
         autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
         transition: Bounce,
       });
     }
