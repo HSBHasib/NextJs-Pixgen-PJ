@@ -8,14 +8,23 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname();
-  console.log("path is .......... ", pathname);
 
   const handlesignOut = async () => {
-    return await authClient.signOut();
+    await authClient.signOut();
   }
 
   const { data, isPending } = authClient.useSession();
   const user = data?.user;
+
+  {
+    isPending && (
+      <>
+        <div className="flex justify-center">
+          <span className="loading loading-spinner text-secondary text-4xl font-extrabold"></span>
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="border-b border-gray-300 px-2 mb-4">

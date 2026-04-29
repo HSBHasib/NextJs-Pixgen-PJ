@@ -35,7 +35,6 @@ export default function SignInPage() {
   } = useForm();
 
   const formHandaler = async (data) => {
-    console.log(data);
     const { email, password } = data;
 
     const { data: dets, error } = await authClient.signIn.email({
@@ -102,26 +101,24 @@ export default function SignInPage() {
           <fieldset className="space-y-2">
             <legend className="font-semibold pl-2">Email</legend>
             <Input
-              required
               placeholder="Enter your email"
               type="email"
               className="bg-gray-100 w-full"
               {...register("email", { required: true })}
             />
-            {errors.email && <span>This field is required</span>}
+            {errors.email && <span className="text-red-500 px-2">Name is required</span>}
           </fieldset>
 
           {/* Password */}
           <fieldset className="space-y-2 relative">
             <legend className="font-semibold pl-2">Password</legend>
             <Input
-              required
               type={isVisible ? "text" : "password"}
               placeholder="Enter you password"
               className="bg-gray-100 w-full"
               {...register("password", { required: true })}
             />
-            {errors.password && <span>This field is required</span>}
+            {errors.password && <p className="text-red-500 px-2">This field is required</p>}
             <Button
               isIconOnly
               aria-label={isVisible ? "Hide password" : "Show password"}

@@ -104,50 +104,61 @@ export default function SignUpPage() {
           <fieldset className="space-y-2">
             <legend className="font-semibold pl-2">Name</legend>
             <Input
-              required
               placeholder="Enter your name"
               className="bg-gray-100 w-full"
-              {...register("name", { required: true })}
+              {...register("name", {
+                required: true,
+                pattern: /^[a-zA-Z\s]{3,25}$/,
+              })}
             />
-            {errors.name && <span>This field is required</span>}
+            {errors.name && (
+              <p className="text-red-500 px-2">
+                Only letters allowed (min. 3 chars)
+              </p>
+            )}
           </fieldset>
 
           {/* Image url */}
-          <fieldset className="space-y-2">
-            <legend className="font-semibold pl-2">Image Url</legend>
+          <fieldset>
+            <legend className="font-semibold pl-2 mb-2">Image Url</legend>
             <Input
-              required
               placeholder="Enter your image url"
-              className="bg-gray-100 w-full"
-              {...register("image", { required: true })}
+              className="bg-gray-100 w-full mb-0.5"
+              {...register("image")}
             />
-            {errors.image && <span>This field is required</span>}
+            <p className="text-gray-700 px-2">Optional</p>
           </fieldset>
 
           {/* Email */}
           <fieldset className="space-y-2">
             <legend className="font-semibold pl-2">Email</legend>
             <Input
-              required
               placeholder="Enter your email"
               type="email"
               className="bg-gray-100 w-full"
-              {...register("email", { required: true })}
+              {...register("email", {
+                required: true,
+                pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
+              })}
             />
-            {errors.email && <span>This field is required</span>}
+            {errors.email && (
+              <p className="text-red-500 px-2">Enter a valid email address</p>
+            )}
           </fieldset>
 
           {/* Password */}
           <fieldset className="space-y-2 relative">
             <legend className="font-semibold pl-2">Password</legend>
             <Input
-              required
               type={isVisible ? "text" : "password"}
               placeholder="Enter you password"
               className="bg-gray-100 w-full"
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: true,
+                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
+              })}
             />
-            {errors.password && <span>This field is required</span>}
+            {errors.password && (<p className="text-red-500 px-2">Min. 8 chars, must include A-z and 0-9</p>)}
             <Button
               isIconOnly
               aria-label={isVisible ? "Hide password" : "Show password"}
