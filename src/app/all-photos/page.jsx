@@ -1,5 +1,4 @@
 import Cards from '@/components/Cards/Cards';
-import { Card } from '@heroui/react';
 import React from 'react'
 
 const AllPhotosPage = async () => {
@@ -8,7 +7,7 @@ const AllPhotosPage = async () => {
   return (
     <div>
       <h1 className='text-2xl font-bold mt-9 mb-6'>🔥All Photos</h1>
-      <div className='grid grid-cols-4 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
         {
             data.map(data => <Cards key={data.id} topGenData={data}/>)
         }

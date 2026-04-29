@@ -21,7 +21,7 @@ function ProfilePage() {
   return (
     <div className="flex flex-col items-center justify-center pt-5 px-4">
       <h1 className="text-3xl font-bold mb-4">Profile Card</h1>
-      <Card className="w-[70vh] max-w-md p-0 border border-gray-100 shadow-2xl rounded-2xl overflow-hidden bg-white">
+      <Card className="max-[500px]:w-[35vh] w-[70vh] max-w-md p-0 border border-gray-100 shadow-2xl rounded-2xl overflow-hidden bg-white">
         {/* Banner Decor */}
         <div className="h-32 bg-gradient-to-r from-blue-600 to-purple-600 w-full" />
 

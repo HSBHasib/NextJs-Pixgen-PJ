@@ -9,7 +9,7 @@ const TopGenerations = async () => {
   return (
     <div>
       <h1 className='text-2xl font-bold mt-9 mb-6'>🔥Top Generations</h1>
-      <div className='grid grid-cols-4 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
         {
             topGen.map(topGenData => <Cards key={topGenData.id} topGenData={topGenData}/>)
         }

@@ -16,7 +16,7 @@ const DetailsPhotoPage = async ({ params }) => {
   const targetData = data.filter((dataId) => dataId.id === Number(id));
   const { title, imageUrl, prompt, category, likes, downloads, tags, model } = targetData[0];
   return (
-    <div className="card bg-base-100 w-[70%] h-auto mx-auto shadow-blue-200 shadow-lg mt-2 rounded-lg">
+    <div className="card bg-base-100 max-[500px]:w-[98%] w-[70%] h-auto mx-auto shadow-blue-200 shadow-lg mt-2 rounded-lg">
       <figure className="relative w-full h-auto aspect-square">
         {/* Back Button */}
         <CroxButton />
@@ -55,7 +55,7 @@ const DetailsPhotoPage = async ({ params }) => {
         </div>
 
         {/* --- Likes & Downloads Row --- */}
-        <div className="flex justify-between items-center gap-6 py-4 px-5 mt-3 bg-gray-50/50 rounded-lg border border-gray-100 w-full shadow shadow-blue-200">
+        <div className="flex flex-wrap justify-between items-center gap-6 py-4 px-5 mt-3 bg-gray-50/50 rounded-lg border border-gray-100 w-full shadow shadow-blue-200">
           {/* Like Stat */}
           <div className="flex items-center gap-2 group cursor-pointer">
             <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
