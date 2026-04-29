@@ -87,7 +87,7 @@ export default function SignInPage() {
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">Create Account</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Sign In</h1>
           <p className="text-gray-500 text-sm mt-1">
             Join PixGen to start generating images
           </p>
