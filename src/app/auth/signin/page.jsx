@@ -13,6 +13,20 @@ export default function SignInPage() {
   const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
 
+  // Google singnUp
+  const googleSignUp = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
+  // Github signUp
+  const githubSignUp = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+  };
+
   const {
     register,
     handleSubmit,
@@ -130,6 +144,30 @@ export default function SignInPage() {
             type="submit"
           >
             Sign In
+          </Button>
+
+          <div className="relative flex py-2 items-center">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="flex-shrink mx-4 text-gray-400 text-xs">OR</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
+
+          <Button
+            onClick={() => googleSignUp()}
+            variant="tertiary"
+            className="w-full border-gray-200 font-medium"
+          >
+            <FcGoogle />
+            Sign up with Google
+          </Button>
+
+          <Button
+            onClick={() => githubSignUp()}
+            variant="tertiary"
+            className="w-full border-gray-200 font-medium"
+          >
+            <FaGithub />
+            Sign up with Github
           </Button>
         </Form>
 

@@ -13,6 +13,20 @@ export default function SignUpPage() {
   const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
 
+  // Google singnUp
+  const googleSignUp = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
+  // Github signUp
+  const githubSignUp = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+  };
+
   const {
     register,
     handleSubmit,
@@ -165,6 +179,7 @@ export default function SignUpPage() {
           </div>
 
           <Button
+            onClick={() => googleSignUp()}
             variant="tertiary"
             className="w-full border-gray-200 font-medium"
           >
@@ -173,6 +188,7 @@ export default function SignUpPage() {
           </Button>
 
           <Button
+            onClick={() => githubSignUp()}
             variant="tertiary"
             className="w-full border-gray-200 font-medium"
           >
