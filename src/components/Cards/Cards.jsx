@@ -10,7 +10,7 @@ const Cards = ({ topGenData }) => {
   return (
     <div>
       {/* Right Column */}
-      <Card className="min-h-[300px] overflow-hidden rounded-xl text-white hover:shadow hover:scale-105 transition-all duration-300">
+      <Card className="min-h-[350px] overflow-hidden rounded-xl text-white hover:shadow hover:scale-105 transition-all duration-300">
         {/* Background image */}
         <Image
           src={imageUrl}
@@ -39,7 +39,7 @@ const Cards = ({ topGenData }) => {
             </div>
             <div className="text-xs">Downloads: {downloads}</div>
           </div>
-          <Link href={`/all-photos/${id}`}>
+          <Link className='!no-underline' href={`/all-photos/${id}`}>
             <Button size="sm" variant="secondary">
               View Details
             </Button>
