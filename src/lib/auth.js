@@ -8,7 +8,9 @@ const db = client.db('pixgen');
 export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
+    autoSignIn: false
   },
+  
   database: mongodbAdapter(db, {
     // Optional: if you don't provide a client, database transactions won't be enabled.
     client,

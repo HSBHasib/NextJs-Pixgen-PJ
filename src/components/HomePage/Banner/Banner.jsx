@@ -15,7 +15,7 @@ const Banner = () => {
           </p>
 
           <div className="flex gap-4">
-            <Link href="generate">
+            <Link href="/workingpage">
               <Button className="cursor-pointer bg-linear-to-r from-pink-500 via-purple-500 bg-red-500 px-4 py-2 rounded-md hover:from-pink-600 hover:via-purple-600 hover:bg-red-600 transition-all duration-200">
                 Generate Now
               </Button>

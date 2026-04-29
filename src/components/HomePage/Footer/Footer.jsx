@@ -73,12 +73,12 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-black transition">
+                  <Link href="/workingpage" className="hover:text-black transition">
                     Contact
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="hover:text-black transition">
+                  <Link href="/workingpage" className="hover:text-black transition">
                     Terms
                   </Link>
                 </li>
@@ -94,7 +94,7 @@ const Footer = () => {
                 Generate your first AI image today.
               </p>
               <Link
-                href="/signup"
+                href="auth/signin"
                 className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-gray-900 text-white text-sm font-medium transition-all duration-200 hover:bg-black hover:scale-[1.02] hover:shadow-lg hover:shadow-gray-200"
               >
                 Get Started
@@ -109,10 +109,10 @@ const Footer = () => {
           <div className="mt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
             <p>© {new Date().getFullYear()} pixgen. All rights reserved.</p>
             <div className="flex items-center gap-6">
-              <Link href="/privacy" className="hover:text-black transition">
+              <Link href="/workingpage" className="hover:text-black transition">
                 Privacy
               </Link>
-              <Link href="/terms" className="hover:text-black transition">
+              <Link href="/workingpage" className="hover:text-black transition">
                 Terms
               </Link>
             </div>
